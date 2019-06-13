@@ -8,6 +8,30 @@
 <body>
   <div id="app">
     <!-- この#appの内側にテンプレートを書き込んでいく -->
+      <!-- テキストのバインディング -->
+      
+      <p>{{ message }}</p>
+      <!-- 繰り返しの描画 -->
+      <ol>
+        <li v-for="item in list"> {{ item }}</li>
+      </ol>
+      <!-- イベントの利用 -->
+      <button v-on:clike="handleClick">Clike</button>
+      <!-- フォーム入力との同期 --> 
+      <p> {{ message }}</p>
+      <input v-model="message">
+      <!-- 数値を受け取る場合 -->
+      <input v-model.number="count">
+      <!-- 条件分岐 -->
+      <p v-if="show">Hello vue.js</p>
+
+      <!-- なんか動かない -->
+      <!-- トランジションとアニメーション -->
+      <button v-on:click="show!=show">切り替え</button>
+      <transition>
+        <p v-if="show">Hello Vue.js!</p>
+      </transition>
+      
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
   <script src="main.js"></script>
