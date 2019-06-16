@@ -5,10 +5,11 @@ var app = new Vue({
         list: ["りんご", "ゴリラ", "ラッパ"],
         count: 0,
         show: true,
-        methods: {
-            handleClick: function(event) {
-                alert(event.target)
-            }
+
+    },
+    methods: {
+        handleClick: function (event) {
+            alert(event.target) // [object HTMLButtonElement]
         }
     }
 })

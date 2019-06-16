@@ -16,7 +16,7 @@
         <li v-for="item in list"> {{ item }}</li>
       </ol>
       <!-- イベントの利用 -->
-      <button v-on:clike="handleClick">Clike</button>
+      <button v-on:click="handleClick">Clike</button>
       <!-- フォーム入力との同期 --> 
       <p> {{ message }}</p>
       <input v-model="message">
@@ -25,9 +25,12 @@
       <!-- 条件分岐 -->
       <p v-if="show">Hello vue.js</p>
 
-      <!-- なんか動かない -->
       <!-- トランジションとアニメーション -->
-      <button v-on:click="show!=show">切り替え</button>
+      <!-- <button v-on:click="show=!show">切り替え</button>
+      <transition>
+        <p v-if="show">Hello Vue.js!</p>
+      </transition> -->
+      <button v-on:click="show=!show">切り替え</button>
       <transition>
         <p v-if="show">Hello Vue.js!</p>
       </transition>
