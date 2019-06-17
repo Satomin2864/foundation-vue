@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>Vue.js App</title>
+  <link href="main.css" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <!-- この#appの内側にテンプレートを書き込んでいく -->
+    <!-- <p>{{ message.value }}</p> -->
+    <!-- <p>{{ message.value.length}}</p> -->
+    <p>{{ list[2] }}</p>
+    <p>{{ list[num] }}</p>
+
+    <!-- 式は直接かける -->
+    {{ 1 + 1 }}
+    <!-- 式ではなく、文自体は無理 -->
+    <!-- {{ var foo = message }} -->
+
+    <!-- 条件分岐も行ける -->
+    {{ message.length >= 10 ? "10文字以上" : "10文字未満"}}
+
+    {{Math.round(3.14)}}
+
+    <!-- 属性のデータバインディングは無理らしい -->
+    <!-- <input type="text" value="{{ message }}"> -->
+
+    <!-- やりたいならこんな感じで、vue-bindを使う -->
+    <input type="text" v-bind:value="message">
+    <!-- 省略の形はこれ -->
+    <input type="text" :value="message">
+
+    <!-- v-bindにはいくつかの修飾子が使える -->
+    <!-- DOMのtextContentプロパティにバインド -->
+    <div v-bind:text-content.prop="message">...</div>
+    <!-- DOMのscrollTopプロパティにバインド -->
+    <div v-bind:scroll-top.prop="scroll">...</div>
+
+    <!-- countプロパティを表示する -->
+    <p>{{ count }}回クリックしたよ！</p>
+    <!-- このボタンをクリックするとincrementメソッドが呼び出される -->
+    <button v-on:click="increment">カウントを増やす</button>
+
+    <!-- クラスやスタイルのデータバイング -->
+    <p v-bind:class="{ child: isChild, 'is-active': isActive}">Text</p>
+    <p v-bind:style="{ color: textColor, backgroundColor: bgColor }">Text</p>
+
+    <p class="child" v-bind:class="{ 'is-active': isActive}">Text</p>
+    <p style="color:blue" v-bind:style="{ color: textColor }">Text</p>
+
+    <!-- 上のやつをオブジェクトでまとめるとこんな感じ -->
+    <p v-bind:class="classObject">Text</p>
+    <p v-bind:style="styleObject">Text</p>
+
+    <!-- これでitemのプロパティ全部を付けれる -->
+    <img v-bind="item">
+    <!-- 特定の要素のみに変更を加えることができる -->
+    <img v-bind="item" v-bind:id="'thumb-' + item.id">
+
+    <!-- svgのデータバインディング -->
+    <svg xmlns="http*//www.w3.org/2000/svg" version="1.1">
+      <circle cx="100" cy="75" v-bind:r="radius" fill="lightpink">
+    </svg>>
+    <input type="range" min="0" max="100" v-model="radius">
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
